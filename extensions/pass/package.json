@@ -47,10 +47,12 @@
     },
     {
       "name": "otpAfterPassword",
+      "label": "otpAfterPassword",
       "type": "checkbox",
       "title": "Prioritize OTP After Password",
       "description": "When you just copied a password, show OTP entries at the top next time",
-      "default": true
+      "default": true,
+      "required": false
     },
     {
       "name": "lastUsedTtl",
@@ -59,6 +61,24 @@
       "description": "How long to pin the last-used entry to the top of the list",
       "default": "120",
       "required": true
+    },
+    {
+      "name": "action",
+      "type": "dropdown",
+      "title": "Default Action",
+      "description": "Action to perform when pressing Enter on an entry",
+      "required": true,
+      "default": "paste",
+      "data": [
+        {
+          "title": "paste",
+          "value": "paste"
+        },
+        {
+          "title": "copy",
+          "value": "copy"
+        }
+      ]
     }
   ],
   "scripts": {
@@ -66,7 +86,7 @@
     "dev": "vici develop"
   },
   "dependencies": {
-    "@vicinae/api": "0.8.4",
+    "@vicinae/api": "0.17.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },

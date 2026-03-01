@@ -40,6 +40,7 @@
       "title": "Connection Toggleable",
       "description": "Use a single toggle action for connect/disconnect instead of separate actions",
       "default": false,
+      "label": "Connection Toggleable",
       "required": false
     }
   ],
@@ -48,7 +49,7 @@
     "dev": "vici develop"
   },
   "dependencies": {
-    "@vicinae/api": "^0.20.2"
+    "@vicinae/api": "^0.18.3"
   },
   "devDependencies": {
     "typescript": "^5.9.2"
