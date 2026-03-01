@@ -72,7 +72,6 @@ export function sortDevices(devices: Device[]): Device[] {
 	});
 }
 
-
 export function removeFromDeviceList(
 	mac: string,
 	setDevices: React.Dispatch<React.SetStateAction<Device[]>>

@@ -41,3 +41,6 @@ pnpm-lock.*
 yarn.lock
 
 vicinae-env.d.ts
+
+# nix
+.direnv/

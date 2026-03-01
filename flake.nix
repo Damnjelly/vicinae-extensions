@@ -71,10 +71,11 @@
         {
           default = pkgs.mkShell {
             packages = with pkgs; [
-              vicinae.packages.${system}.default
+              # vicinae.packages.${system}.default
               self.formatter.${system}
               nodejs
               typescript-language-server
+              nixd
             ];
           };
         }
