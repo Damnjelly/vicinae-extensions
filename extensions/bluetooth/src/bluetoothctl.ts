@@ -3,7 +3,6 @@ import {
 	confirmAlert,
 	Toast,
 	showToast,
-	Icon,
 } from "@vicinae/api";
 import { ChildProcess, spawn, exec } from "child_process";
 import { stripAnsiCodes, } from "@/utils";
@@ -27,6 +26,7 @@ export class Device {
 	icon: string;
 	connected: boolean;
 	trusted: boolean;
+	batteryLevel?: number;
 
 	constructor(mac: string, name: string, icon: string, connected: boolean, trusted: boolean) {
 		this.mac = mac;
@@ -35,7 +35,12 @@ export class Device {
 		this.connected = connected;
 		this.trusted = trusted;
 	}
-}
+
+	withBatteryLevel(level: number | undefined) {
+		this.batteryLevel = level;
+		return this
+	}
+};
 
 export enum DeviceOptions {
 	PAIRED = "Paired",
@@ -478,8 +483,8 @@ export class Bluetoothctl {
 					name,
 					icon,
 					connected,
-					trusted
-				);
+					trusted,
+				).withBatteryLevel(getBatteryLevel(info));
 			} else {
 				console.error("Error running bluetoothctl info:", stdout);
 				return null;
@@ -768,4 +773,12 @@ export async function fetchDevices(option: DeviceOptions): Promise<Device[]> {
 		}
 	}
 	return list.sort((a, b) => a.name.localeCompare(b.name));
+}
+
+export function getBatteryLevel(info: string): number | undefined {
+	const matches = info.match(BLUETOOTH_REGEX.batteryLevel);
+
+	if (matches === null) return;
+
+	return !!matches[1] ? parseInt(matches[1].trim()) : undefined;
 }

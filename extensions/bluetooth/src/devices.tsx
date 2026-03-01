@@ -310,6 +310,12 @@ const DeviceListItem = React.memo(function DeviceListItem({ device }: { device: 
 	);
 });
 
+function batteryIconColor(batteryLevel: number): Color {
+	if (batteryLevel > 20) return Color.Green;
+	else if (batteryLevel > 5) return Color.Orange;
+	else return Color.Red
+}
+
 const DeviceDetail = React.memo(function DeviceDetail({ device }: { device: Device }) {
 	return (
 		<List.Item.Detail
@@ -338,6 +344,18 @@ const DeviceDetail = React.memo(function DeviceDetail({ device }: { device: Devi
 								? Color.Green
 								: Color.Red
 						}} />
+					{device.connected && typeof device.batteryLevel === 'number' ? (
+						<List.Item.Detail.Metadata.Label
+							title='Battery Level'
+							text={`${device.batteryLevel} %`}
+							icon={
+								{
+									source: Icon.Battery,
+									tintColor: batteryIconColor(device.batteryLevel)
+								}
+							}
+						/>
+					) : undefined}
 				</List.Item.Detail.Metadata>
 			}
 		/>
