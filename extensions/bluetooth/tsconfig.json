@@ -1,11 +1,14 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "Node 16",
-  "include": ["src/**/*"],
+  "include": [
+    "src/**/*"
+  ],
   "compilerOptions": {
-    //"lib": ["es2020"],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": [
+        "./src/*"
+      ]
     },
     "module": "commonjs",
     "target": "es2020",
@@ -18,4 +21,3 @@
     "jsx": "react-jsx"
   }
 }
-
