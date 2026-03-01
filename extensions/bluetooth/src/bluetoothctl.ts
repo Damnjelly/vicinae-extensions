@@ -425,7 +425,6 @@ export class Bluetoothctl {
 			},
 		});
 		if (confirm) {
-			this.yes();
 			await showToast({
 				style: Toast.Style.Animated,
 				title: "Authorizing Service",

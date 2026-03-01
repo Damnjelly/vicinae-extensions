@@ -51,6 +51,9 @@ function useDiscover() {
 				setPairingDevice(null);
 			} else if (line.type === LineType.RequestCancelled) {
 				setPairingDevice(null);
+			} else if (line.type === LineType.AuthorizeService) {
+				// await btRef.current?.handleAuthorizeService(line);
+				btRef.current?.yes();
 			} else if (line.type === LineType.PinCodeRequest) {
 				console.error("Pin code request not implemented");
 				await btRef.current?.handlePinCodeRequest(

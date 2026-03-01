@@ -52,11 +52,11 @@ export function getIconFromInfo(info: string) {
 }
 
 export function getBatteryLevel(info: string): number | undefined {
-  const matches = info.match(BLUETOOTH_REGEX.batteryLevel);
+	const matches = info.match(BLUETOOTH_REGEX.batteryLevel);
 
-  if (matches === null) return;
+	if (matches === null) return;
 
-  return !!matches[1] ? parseInt(matches[1].trim()) : undefined;
+	return !!matches[1] ? parseInt(matches[1].trim()) : undefined;
 }
 
 export function sortDevices(devices: Device[]): Device[] {
